@@ -1,5 +1,5 @@
 'use strict';
-exports.ok = function(value,rest){
+exports.ok = function(values,rest){
               var data ={
               'status':200,
               'values':values
@@ -7,4 +7,4 @@ exports.ok = function(value,rest){
 
               rest.json(data);
               rest.end();
-}
+};

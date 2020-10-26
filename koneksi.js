@@ -3,7 +3,7 @@ var mysql = require ('mysql');
 
 // buat koneksi ke database 
 
-const conse =mysql.createConnection({
+const conse = mysql.createConnection({
               host:'localhost',
               user:'root',
               password:'',
