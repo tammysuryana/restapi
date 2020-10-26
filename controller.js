@@ -50,11 +50,12 @@ exports.tambahMahasiswa = function (req, res) {
 
 // merubah data berdasarkan id 
 exports.UbahMasasiwa = function (req, rest) {
-              var id = req.body.id_mahasiswa;
-              var nim = req.body.nim;
-              var nama = req.body.nama;
-              var jurusan = req.body.jurusan;
-              connection.query('UPDATE mahasiswa SET nim=?, nama=?, jurusan=? WHERE id_mahasiswa=?', [nim, nama, jurusan, id],
+              var {id_mahasiswa, nim , nama, jurusan }=req.body 
+              // var id = req.body.id_mahasiswa;
+              // var nim = req.body.nim;
+              // var nama = req.body.nama;
+              // var jurusan = req.body.jurusan;
+              connection.query('UPDATE mahasiswa SET nim=?, nama=?, jurusan=? WHERE id_mahasiswa=?', [nim, nama, jurusan, id_mahasiswa],
                             function (error, rows) {
                                           if (error) {
                                                         console.log(error, rows);
