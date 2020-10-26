@@ -31,21 +31,35 @@ exports.tampilberdasarkanid = function (req, rest) {
 };
 
 // menambahkan data mahasiswa 
-exports.tambahMahasiswa = function (req, rest) {
+exports.tambahMahasiswa = function (req, res) {
+              // var id = req.body.id_mahasiswa;
               var nim = req.body.nim;
               var nama = req.body.nama;
               var jurusan = req.body.jurusan;
 
-              connection.query('INSERT INTO mahasiswa (nim,nama,jurusan)VALUES(?,?,?)',
-                            [nim, nama, jurusan],
-                            function (error, rows, fileds) {
-                                          if (error) {
-                                                        console.log(error);
-                                          } else {
-                                                        response.ok('data berhasil di tambahin nih'.rest)
-                                          }
-                            });
+connection.query('INSERT INTO mahasiswa (nim,nama,jurusan)VALUES(?,?,?)',
+[nim, nama, jurusan],
+              function (error, rows, fileds) {
+              if (error) {
+              console.log(error);
+              } else {
+              response.ok('data berhasil di tambahin nih',res)
+}
+});
 };
 
 // merubah data berdasarkan id 
-exports.UbahMasasiwa
+exports.UbahMasasiwa = function (req, rest) {
+              var id = req.body.id_mahasiswa;
+              var nim = req.body.nim;
+              var nama = req.body.nama;
+              var jurusan = req.body.jurusan;
+              connection.query('UPDATE mahasiswa SET nim=?, nama=?, jurusan=? WHERE id_mahasiswa=?',[nim, nama, jurusan,id],
+                            function (error, rows) {
+                                          if (error) {
+                                                        console.log(error, rows);
+                                          } else {
+                                                        response.ok('berhasil NGUBAH  data gaes!', rest)
+                                          }
+                            });
+};

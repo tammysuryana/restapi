@@ -1,9 +1,12 @@
+GET http://localhost:3000
+###
 GET http://localhost:3000/tampil
 ###
 POST http://localhost:3000/tambah
 
 ###
-GET http://localhost:3000/tambah
+DELETE http://localhost/delete
 
 ###
-DELETE http://localhost/delete
+
+PUT http://localhost/ubah
