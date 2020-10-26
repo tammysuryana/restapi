@@ -37,15 +37,15 @@ exports.tambahMahasiswa = function (req, res) {
               var nama = req.body.nama;
               var jurusan = req.body.jurusan;
 
-connection.query('INSERT INTO mahasiswa (nim,nama,jurusan)VALUES(?,?,?)',
-[nim, nama, jurusan],
-              function (error, rows, fileds) {
-              if (error) {
-              console.log(error);
-              } else {
-              response.ok('data berhasil di tambahin nih',res)
-}
-});
+              connection.query('INSERT INTO mahasiswa (nim,nama,jurusan)VALUES(?,?,?)',
+                            [nim, nama, jurusan],
+                            function (error, rows, fileds) {
+                                          if (error) {
+                                                        console.log(error);
+                                          } else {
+                                                        response.ok('data berhasil di tambahin nih', res)
+                                          }
+                            });
 };
 
 // merubah data berdasarkan id 
@@ -54,7 +54,7 @@ exports.UbahMasasiwa = function (req, rest) {
               var nim = req.body.nim;
               var nama = req.body.nama;
               var jurusan = req.body.jurusan;
-              connection.query('UPDATE mahasiswa SET nim=?, nama=?, jurusan=? WHERE id_mahasiswa=?',[nim, nama, jurusan,id],
+              connection.query('UPDATE mahasiswa SET nim=?, nama=?, jurusan=? WHERE id_mahasiswa=?', [nim, nama, jurusan, id],
                             function (error, rows) {
                                           if (error) {
                                                         console.log(error, rows);
@@ -63,3 +63,16 @@ exports.UbahMasasiwa = function (req, rest) {
                                           }
                             });
 };
+
+// menghapus data beerdasarkan ID 
+exports.hapusMahasiswa = function (req, rest) {
+              var id = req.body.id_mahasiswa;
+              connection.query('DELETE FROM mahasiswa WHERE id_mahasiswa=?', [id],
+                            function (error, rows, fileds) {
+                                          if (error) {
+                                           console.log(error, rows);
+                                          } else {
+                                                        response.ok('berhasil  HAPUS  cuy', rest)
+                                          }
+                            });
+}

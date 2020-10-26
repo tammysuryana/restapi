@@ -1,4 +1,9 @@
 {
               "git.ignoreLimitWarning": true,
-              "editor.fontSize": 15
+              "editor.fontSize": 15,
+              "editor.cursorBlinking": "expand",
+              "editor.cursorSmoothCaretAnimation": true,
+              "editor.cursorStyle": "block",
+              "editor.cursorSurroundingLines": 25,
+              "editor.cursorWidth": 79
 }
