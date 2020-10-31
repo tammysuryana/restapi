@@ -4,7 +4,7 @@
 
 
 
- //paerserr aplication /json n
+ //paerserr aplication /jsonn
  app.use(bodyParser.urlencoded({extended: true}));
  app.use(bodyParser.json());
 
@@ -14,4 +14,4 @@
 
  app.listen(3000, () => {
                console.log('Server started on port');
- });
+ }); 

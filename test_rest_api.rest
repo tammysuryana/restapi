@@ -10,3 +10,6 @@ DELETE http://localhost/delete
 ###
 
 PUT http://localhost/ubah
+
+### 
+GET http://localhost:3000/tampilmatakuliah

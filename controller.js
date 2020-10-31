@@ -50,7 +50,7 @@ exports.tambahMahasiswa = function (req, res) {
 
 // merubah data berdasarkan id 
 exports.UbahMasasiwa = function (req, rest) {
-              var {id_mahasiswa, nim , nama, jurusan }=req.body 
+              var { id_mahasiswa, nim, nama, jurusan } = req.body
               connection.query('UPDATE mahasiswa SET nim=?, nama=?, jurusan=? WHERE id_mahasiswa=?', [nim, nama, jurusan, id_mahasiswa],
                             function (error, rows) {
                                           if (error) {
@@ -72,4 +72,17 @@ exports.hapusMahasiswa = function (req, rest) {
                                                         response.ok('berhasil  HAPUS  cuy', rest)
                                           }
                             });
+}
+
+//menampilkan matakuliah 
+exports.tampilgroupmatakuliah= function(req, rest){
+    connection.query('SELECT mahasiswa.id_mahasiswa, mahasiswa.nim, mahasiswa.nama, mahasiswa.jurusan, matakuliah.matakuliah, matakuliah.sks FROM krs JOIN matakuliah JOIN mahasiswa WHERE krs.id_matakuliah = matakuliah.id_matakuliah AND krs.id_mahasiswa = mahasiswa.id_mahasiswa ORDER BY mahasiswa.id_mahasiswa',
+    function (error,rows, fileds){
+                  if(error){
+                                console.log(error);
+                  }else{
+                                response.oknested(rows,rest);
+                  }
+    }
+    )          
 }

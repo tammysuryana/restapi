@@ -4,6 +4,5 @@
               "editor.cursorBlinking": "expand",
               "editor.cursorSmoothCaretAnimation": true,
               "editor.cursorStyle": "block",
-              "editor.cursorSurroundingLines": 25,
-              "editor.cursorWidth": 79
+              "editor.cursorSurroundingLines": 25
 }
