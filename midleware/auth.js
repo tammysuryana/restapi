@@ -2,7 +2,7 @@ var connection = require ('../koneksi');
 var mysql = require ('mysql');
 var md5 = require('md5');
 var response = require ('../rest' );
-var jwt = require('jesonwebtoken');
+var jwt = require('jsonwebtoken');
 var config = require('../config/secret');
 var ip = require ('ip');
 
@@ -18,23 +18,23 @@ exports.register = function(req,res){
     }
 
     //untuk mengecek yang terdaftar email 
-    var query = "SELECT email FROM ?? WHERE?? ";
-    var table = ('user', 'email', post.email);
+    var query = "SELECT email FROM ?? WHERE ??=?";
+    var table = ["user", "email", post.email];
 
-    query = mysql.format(query.table);
-    connection.query(query, function(error,row){
-        if (error){
-            console.log(error);
-        }else{
-            if (row.length == 0){
-                var query ="INSERT INTO ?? SET ?";
-                var table =['user'];
-                query = mysql.format(query.table);
-                connection.query(query, post , function(error,row){
-                    if(error){
-                        console.log(error);
-                    }else{
-                        response.ok("email sudah terdaftar..!!")
+    query = mysql.format(query,table);
+    connection.query(query, function (error, rows) {
+        if (error) {
+             console.log(error);
+        } else {
+             if (rows.length == 0) {
+                  var query = "INSERT INTO ?? SET ?";
+                  var table = ["user"];
+                  query = mysql.format(query, table);
+                  connection.query(query, post, function (error,rows) {
+                       if (error) {
+                            console.log(error);
+                       } else {
+                        response.ok("email sudah terdaftar..!!",res);
                     }
                 })
             }

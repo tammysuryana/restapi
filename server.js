@@ -1,17 +1,23 @@
- const express = require('express');
- const bodyParser = require ('body-parser');
- const app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+
+var morgan = require('morgan');
+const app = express();
 
 
+//parse application/json
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(morgan('dev'));
 
- //paerserr aplication /jsonn
- app.use(bodyParser.urlencoded({extended: true}));
- app.use(bodyParser.json());
 
- //panggil routes 
- var routes = require ('./routes');
- routes (app);
+//panggil routes
+var routes = require('./routes');
+routes(app);
 
- app.listen(3000, () => {
-               console.log('Server started on port');
- }); 
+//daftarkan menu routes dari index
+app.use('/auth', require('./midleware'));
+
+app.listen(3000, () => {
+    console.log('Server started on port 3001');
+});
