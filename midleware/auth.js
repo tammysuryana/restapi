@@ -34,9 +34,11 @@ exports.register = function(req,res){
                        if (error) {
                             console.log(error);
                        } else {
-                        response.ok("email sudah terdaftar..!!",res);
+                        response.ok("berhasil di tambahkan bro !".res);
                     }
-                })
+                });
+            }else{
+                response.ok("email nya udah pernah daftar cuy !",res)
             }
         }
     })
