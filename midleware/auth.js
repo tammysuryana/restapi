@@ -94,3 +94,7 @@ exports.register = function(req,res){
      });
  }
 
+
+ exports.halaman = function(req,res){
+     res.ok("halaman ini hanya untuk  user dengan role = 2!! ",res);
+ }
